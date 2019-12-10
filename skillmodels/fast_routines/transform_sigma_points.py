@@ -54,11 +54,11 @@ def anchor_sigma_points(sigma_points, loadings, positions, variables):
     for p, pos in enumerate(positions):
         sigma_points[:, :, pos] *= loadings[p, pos]
         if variables is not None:
-            sigma_points[:, :, pos] -= variables[p]
+            sigma_points[:, :, pos] -= variables[p].reshape(-1, 1)
 
 
 def unanchor_sigma_points(sigma_points, loadings, positions, variables):
     for p, pos in enumerate(positions):
         sigma_points[:, :, pos] /= loadings[p, pos]
         if variables is not None:
-            sigma_points[:, :, pos] += variables[p]
+            sigma_points[:, :, pos] += variables[p].reshape(-1, 1)
