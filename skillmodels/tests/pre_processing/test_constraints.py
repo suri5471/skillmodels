@@ -323,7 +323,7 @@ def test_anchoring_constraints_no_constraint_needed(anch_uinfo):
 
 def test_anchoring_constraints_for_constants(anch_uinfo):
     calculated = _anchoring_constraints(
-        anch_uinfo, [], "outcome", ["f1", "f2"], True, False, True, (0, 1)
+        anch_uinfo, [[], []], "outcome", ["f1", "f2"], True, False, True, (0, 1)
     )
 
     expected = [
@@ -338,7 +338,14 @@ def test_anchoring_constraints_for_constants(anch_uinfo):
 
 def test_anchoring_constraints_for_controls(anch_uinfo):
     calculated = _anchoring_constraints(
-        anch_uinfo, ["c1", "c2"], "outcome", ["f1", "f2"], False, True, True, (0, 1)
+        anch_uinfo,
+        [["c1", "c2"]] * 2,
+        "outcome",
+        ["f1", "f2"],
+        False,
+        True,
+        True,
+        (0, 1),
     )
     expected = [
         {
@@ -368,7 +375,7 @@ def test_anchoring_constraints_for_controls(anch_uinfo):
 
 def test_anchoring_constraints_for_loadings(anch_uinfo):
     calculated = _anchoring_constraints(
-        anch_uinfo, [], "outcome", ["f1", "f2"], True, True, False, (0, 1)
+        anch_uinfo, [[], []], "outcome", ["f1", "f2"], True, True, False, (0, 1)
     )
 
     expected = [

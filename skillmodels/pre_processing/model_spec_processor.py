@@ -157,6 +157,7 @@ class ModelSpecProcessor:
             self.use_anchoring_controls = anch_info.get("use_controls", False)
             self.use_anchoring_constant = anch_info.get("use_constant", False)
             self.free_anchoring_loadings = anch_info.get("free_loadings", False)
+            self.check_anchoring_outcome = anch_info.get("check_outcome", True)
 
             assert isinstance(self.anchoring, bool)
             assert isinstance(self.anch_outcome, (str, int, tuple))
@@ -165,6 +166,7 @@ class ModelSpecProcessor:
             assert isinstance(self.use_anchoring_controls, bool)
             assert isinstance(self.use_anchoring_constant, bool)
             assert isinstance(self.free_anchoring_loadings, bool)
+            assert isinstance(self.check_anchoring_outcome, bool)
         else:
             self.anchoring = False
             self.anchored_factors = []
@@ -173,6 +175,7 @@ class ModelSpecProcessor:
             self.free_anchoring_loadings = False
             self.anch_outcome = None
             self.centered_anchoring = False
+            self.check_anchoring_outcome = False
 
     def _check_measurements(self):
         """Set a dictionary with the cleaned measurement specifications as attribute."""

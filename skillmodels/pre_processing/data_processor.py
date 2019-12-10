@@ -334,7 +334,7 @@ class DataProcessor:
             concat_cont = check_variable_list("control", self.controls[t], df)
             concat_meas = check_variable_list("measurement", sorted(meas_t), df)
             report_issues = pd.concat([report_issues, concat_cont, concat_meas])
-            if self.anchoring:
+            if self.check_anchoring_outcome:
                 concat_anch = check_anchoring_variable(
                     self.centered_anchoring, self.anch_outcome, df
                 )
